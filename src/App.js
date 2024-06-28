@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+// App.js
+import React from 'react';
+import './App.css'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Crm from './components/crm';
+import Customer from './components/customar';
+import Orders from './components/orders';
+import Reports from './components/reports';
+import Home from './components/crmHome';
+import Login from './components/Modals/login';
+import Signup from './components/Modals/signup';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="flex min-h-screen bg-background text-primary-foreground">
+        <Crm />
+        <main className="flex-1 p-8">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/customer" element={<Customer />} />
+            <Route path="/orders" element={<Orders />} />
+            <Route path="/reports" element={<Reports />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+          </Routes>
+        </main>
+      </div>
+    </BrowserRouter>
   );
 }
 
